@@ -1,0 +1,76 @@
+body {
+  background-image: url(./dots.png);
+  background-color: #101010;
+  font-family: "Bangers", cursive;
+  letter-spacing: 2px;
+}
+
+#podium {
+  display: flex;
+  width: 50%;
+  justify-content: center;
+  margin: auto;
+}
+#podium div {
+  color: white;
+  display: flex;
+  flex-direction: column-reverse;
+  text-align: center;
+  min-width: 33%;
+  margin: 2px;
+}
+
+#podium div:after {
+  background: linear-gradient(
+    180deg,
+    rgba(121, 9, 9, 1) 43%,
+    rgba(121, 9, 9, 0) 100%
+  );
+
+  border: 4px solid rgb(255, 17, 17);
+  border-bottom: 0;
+  height: 20rem;
+  content: "1";
+  width: 100%;
+  padding-top: 15px;
+  font-size: 2rem;
+  font-family: "Bangers", cursive;
+}
+#podium :nth-child(1) {
+  order: 2;
+}
+#podium :nth-child(2):after {
+  height: 15rem;
+  animation-name: grow;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  content: "2";
+}
+
+#podium :nth-child(2) {
+  order: 1;
+}
+
+#podium :nth-child(3) {
+  order: 3;
+}
+
+#podium :nth-child(3):after {
+  height: 12rem;
+  content: "3";
+}
+
+#podium div h2 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@keyframes grow {
+  from {
+    height: 0;
+  }
+  to {
+    height: 15rem;
+  }
+}
