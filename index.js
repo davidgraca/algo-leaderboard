@@ -24,7 +24,7 @@ const computeChamp = (players) => {
       .filter(e => e !== champion && !ignore.includes(e.codingamerNickname))
       .map(({codingamerNickname, score},i) => ({
           "pseudo": codingamerNickname,
-          "rank": i+1,
+          // "rank": i+1,
           "score": (ranks[i] || 0) + (players.indexOf(champion) > i ? beatChamp : 0) + (score === 100 ? completed : 0)
       }))
 }
@@ -44,15 +44,30 @@ const computeChamp = (players) => {
     }).then(e=>e.json());
     players.sort((a,b) => a.rank - b.rank);
 
-    const champions = computeChamp(players);
-    return {
-      idClash,
-      "podium": champions.slice(0,3),
-      "players": champions.slice(3),
-    }
+    return computeChamp(players);
   }));
 
-  let index = mustache.render(data, {clashes});
+  const globalChamps = Object.entries(clashes
+    .flat()
+    .reduce((acc, {pseudo, score}) => ({
+      ...acc,
+      [pseudo]: (acc[pseudo] || 0) + score
+    }), {}))
+    .sort(([,a],[,b]) =>b - a)
+    .map(([pseudo, score],i)=> ({
+      pseudo,
+      score,
+      rank: i+1
+    }))
+
+  console.log(globalChamps)
+
+
+  let index = mustache.render(data, {
+    "idClashs": idClashs.map((id, i) => ({id, "index": i + 1})),
+    "podium": globalChamps.slice(0, 3),
+    "players": globalChamps.slice(3)
+  });
 
   let dir = "./build";
 

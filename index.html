@@ -13,9 +13,10 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    {{#clashes}}
     <div>
-      <a href="https://www.codingame.com/clashofcode/clash/report/{{idClash}}">Lien du clash !</a>
+      {{#idClashs}}
+      <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}">Lien du clash {{index}}</a>
+      {{/idClashs}}
       <section id="podium">
         {{#podium}}
         <div><h2>{{pseudo}}<br>({{score}} points)</h2></div>
@@ -23,10 +24,9 @@
       </section>
       <ol>
         {{#players}}
-        <li>{{pseudo}} - ({{score}} points)</li>
+        <li>{{rank}} - {{pseudo}} ({{score}} points)</li>
         {{/players}}
       </ol>
     </div>
-    {{/clashes}}
   </body>
 </html>
