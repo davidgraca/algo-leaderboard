@@ -12,29 +12,62 @@
     <link href="https://unpkg.com/pattern.css" rel="stylesheet">
   </head>
 
-  <body class="pattern-dots-lg">
+  <body>
     <h1>Christmas</h1>
     <h2>Coding</h2>
     <h2>Challenge</h2>
     <h3>2020</h3>
-    {{#clashes}}
     <div class="clash">
-      <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}">Lien du clash {{index}}</a>
       <section id="podium">
         {{#podium}}
         <div class="podium__column">
-          <h3>{{pseudo}}<br>({{score}} points)</h3>
+          <h3><span class="podium__pseudo">{{pseudo}}</span><br>{{score}} points</h3>
         </div>
         {{/podium}}
       </section>
-      <ol>
-        {{#players}}
-        <li>{{rank}} - {{pseudo}} ({{score}} points)</li>
-        {{/players}}
-      </ol>
+      <table>
+        <thead>
+          <td>Rank</td>
+          <td>pseudo</td>
+          <td>Points</td>
+        </thead>
+        <tbody>
+          {{#players}}
+          <tr>
+            <td>{{rank}}</td>
+            <td>{{pseudo}}</td>
+            <td>{{score}}</td>
+          </tr>
+          {{/players}}
+          {{#players}}
+          <tr>
+            <td>{{rank}}</td>
+            <td>{{pseudo}}</td>
+            <td>{{score}} points</td>
+          </tr>
+          {{/players}}
+          {{#players}}
+          <tr>
+            <td>{{rank}}</td>
+            <td>{{pseudo}}</td>
+            <td>{{score}} points</td>
+          </tr>
+          {{/players}}
+          {{#players}}
+          <tr>
+            <td>{{rank}}</td>
+            <td>{{pseudo}}</td>
+            <td>{{score}} points</td>
+          </tr>
+          {{/players}}
+        </tbody>
+      </table>
     </div>
-    {{/clashes}}
-
+    <div class="clashes">
+      {{#clashes}}
+      <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}">Lien du clash {{index}}</a>
+      {{/clashes}}
+    </div>
   </body>
 
 </html>
