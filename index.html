@@ -19,9 +19,7 @@
     <h3>2020</h3>
     {{#clashes}}
     <div class="clash">
-      {{#clashes}}
       <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}">Lien du clash {{index}}</a>
-      {{/clashes}}
       <section id="podium">
         {{#podium}}
         <div class="podium__column">
@@ -35,6 +33,8 @@
         {{/players}}
       </ol>
     </div>
+    {{/clashes}}
+
   </body>
 
 </html>
