@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node .",
+    "start": "node . --proxy"
   },
   "repository": {
     "type": "git",
