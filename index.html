@@ -9,14 +9,13 @@
       href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
       rel="stylesheet"
     />
-    <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
     <div>
-      {{#idClashs}}
+      {{#clashes}}
       <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}">Lien du clash {{index}}</a>
-      {{/idClashs}}
+      {{/clashes}}
       <section id="podium">
         {{#podium}}
         <div><h2>{{pseudo}}<br>({{score}} points)</h2></div>
