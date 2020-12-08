@@ -2,9 +2,12 @@ const mustache = require("mustache");
 const fetch = require("node-fetch");
 const fs = require("fs");
 
-const HttpsProxyAgent = require("https-proxy-agent");
+let agent = undefined;
 
-// const agent = new HttpsProxyAgent("http://localhost:5000");
+if (process.argv.includes("--proxy")) {
+  const HttpsProxyAgent = require("https-proxy-agent");
+  agent = new HttpsProxyAgent("http://localhost:5000");
+}
 
 let callback = (err) => {
   if (err) throw err;
@@ -34,7 +37,7 @@ const computeChamp = (players) => {
 
   const clashes = await Promise.all(idClashs.map(async idClash => {
     const {players} = await fetch("https://www.codingame.com/services/ClashOfCode/findClashReportInfoByHandle", {
-      // agent,
+      agent,
       "headers": {
         "accept": "application/json, text/plain, */*",
         "content-type": "application/json;charset=UTF-8",
