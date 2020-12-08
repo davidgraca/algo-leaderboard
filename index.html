@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
     <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css" />
+    <link href="https://unpkg.com/pattern.css" rel="stylesheet">
   </head>
-  <body>
+
+  <body class="pattern-dots-lg">
+    <h1>Christmas</h1>
+    <h2>Coding</h2>
+    <h2>Challenge</h2>
+    <h3>2020</h3>
     {{#clashes}}
-    <div>
+    <div class="clash">
       <a href="https://www.codingame.com/clashofcode/clash/report/{{idClash}}">Lien du clash !</a>
       <section id="podium">
         {{#podium}}
-        <div><h2>{{pseudo}}<br>({{score}} points)</h2></div>
+        <div class="podium__column">
+          <h3>{{pseudo}}<br>({{score}} points)</h3>
+        </div>
         {{/podium}}
       </section>
       <ol>
@@ -29,4 +35,5 @@
     </div>
     {{/clashes}}
   </body>
+
 </html>
