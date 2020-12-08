@@ -13,16 +13,20 @@
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <a href="https://www.codingame.com/clashofcode/clash/report/{{idClash}}">Lien du clash !</a>
-    <section id="podium">
-      {{#podium}}
-      <div><h2>{{pseudo}}<br>({{score}} points)</h2></div>
-      {{/podium}}
-    </section>
-    <ol>
-      {{#players}}
-      <li>{{pseudo}} - ({{score}} points)</li>
-      {{/players}}
-    </ol>
+    {{#clashes}}
+    <div>
+      <a href="https://www.codingame.com/clashofcode/clash/report/{{idClash}}">Lien du clash !</a>
+      <section id="podium">
+        {{#podium}}
+        <div><h2>{{pseudo}}<br>({{score}} points)</h2></div>
+        {{/podium}}
+      </section>
+      <ol>
+        {{#players}}
+        <li>{{pseudo}} - ({{score}} points)</li>
+        {{/players}}
+      </ol>
+    </div>
+    {{/clashes}}
   </body>
 </html>

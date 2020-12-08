@@ -11,7 +11,7 @@ let callback = (err) => {
   console.log("source.txt was copied to destination.txt");
 };
 
-const idClash = "1427616e3b02df57113addab9155f675ab25569";
+const idClashs = ["1427616e3b02df57113addab9155f675ab25569", "142762261b493c7d8c02c1dd24f7dfe98c75c73"];
 const challenger = "djedje72";
 const ranks = [100,80,60,40,20];
 const ignore = ["djedje72", "Coldk", "J7N__", "Jean-Lou"];
@@ -32,23 +32,27 @@ const computeChamp = (players) => {
 (async() => {
   const data = fs.readFileSync("./index.html", "utf8");
 
-  const {players} = await fetch("https://www.codingame.com/services/ClashOfCode/findClashReportInfoByHandle", {
-    // agent,
-    "headers": {
-      "accept": "application/json, text/plain, */*",
-      "content-type": "application/json;charset=UTF-8",
-    },
-    "body": JSON.stringify([idClash]),
-    "method": "POST"
-  }).then(e=>e.json());
-  players.sort((a,b) => a.rank - b.rank);
+  const clashes = await Promise.all(idClashs.map(async idClash => {
+    const {players} = await fetch("https://www.codingame.com/services/ClashOfCode/findClashReportInfoByHandle", {
+      // agent,
+      "headers": {
+        "accept": "application/json, text/plain, */*",
+        "content-type": "application/json;charset=UTF-8",
+      },
+      "body": JSON.stringify([idClash]),
+      "method": "POST"
+    }).then(e=>e.json());
+    players.sort((a,b) => a.rank - b.rank);
 
-  const computedPlayers = computeChamp(players);
-  let index = mustache.render(data, {
-    idClash,
-    podium: computedPlayers.slice(0,3),
-    players: computedPlayers.slice(3),
-  });
+    const champions = computeChamp(players);
+    return {
+      idClash,
+      "podium": champions.slice(0,3),
+      "players": champions.slice(3),
+    }
+  }));
+
+  let index = mustache.render(data, {clashes});
 
   let dir = "./build";
 
