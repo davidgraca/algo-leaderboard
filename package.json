@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/JLou/algo-leaderboard#readme",
   "dependencies": {
-    "mustache": "^4.1.0"
+    "https-proxy-agent": "5.0.0",
+    "mustache": "^4.1.0",
+    "node-fetch": "2.6.1"
   }
 }
