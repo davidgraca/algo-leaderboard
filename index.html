@@ -14,9 +14,14 @@
   </head>
   <body>
     <section id="podium">
-      <div><h2>RemiFruteaudeLaclos</h2></div>
-      <div><h2>RemiB</h2></div>
-      <div><h2>JL</h2></div>
+      {{#podium}}
+      <div><h2>{{pseudo}}</h2></div>
+      {{/podium}}
     </section>
+    <ol>
+      {{#players}}
+      <li>{{pseudo}}</li>
+      {{/players}}
+    </ol>
   </body>
 </html>
