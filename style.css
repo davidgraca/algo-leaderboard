@@ -198,7 +198,7 @@ table {
 }
 thead {
   background-color: #fffff111;
-  color: #fffff999;
+  color: #fff;
 }
 tbody {
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
@@ -220,6 +220,10 @@ td {
   line-height: 30px;
   left: 0px;
   bottom: 0px;
+}
+
+.clashes a {
+  margin: 0px 20px;
 }
 
 .sessions {
