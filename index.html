@@ -23,44 +23,82 @@
       <h3 class="shadow-text-small">2020</h3>
     </header>
     <div class="sessions">
-      <a class="box-shadow" href="#session1" class="active">Session 1</a>
-      <a class="box-shadow" href="#session2">Session 2</a>
-      <a class="box-shadow" href="#session3">Session 3</a>
-      <a class="box-shadow" href="#global">Global</a>
-    </div>
-    <div class="clash">
-      <section id="podium">
-        {{#podium}}
-        <div class="podium__column">
-          <h3>
-            <span class="podium__pseudo">{{pseudo}}</span><br />{{score}} points
-          </h3>
-        </div>
-        {{/podium}}
-      </section>
-      <table>
-        <thead>
-          <td>Rank</td>
-          <td>pseudo</td>
-          <td>Points</td>
-        </thead>
-        <tbody>
-          {{#players}}
-          <tr>
-            <td>{{rank}}</td>
-            <td>{{pseudo}}</td>
-            <td>{{score}}</td>
-          </tr>
-          {{/players}}
-        </tbody>
-      </table>
-    </div>
-    <div class="clashes">
-      {{#clashes}}
-      <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}"
-        >Lien du clash {{index}}</a
+      {{#classement}}
+      <a href="#" class="box-shadow" data-session="{{index}}"
+        >Session {{index}}</a
       >
-      {{/clashes}}
+      {{/classement}}
+      <a href="#" class="box-shadow" data-session="all">Global</a>
+    </div>
+    {{#classement}} {{#score}}
+    <div class="session-{{index}}">
+      <div class="clash">
+        <section id="podium">
+          {{#podium}}
+          <div class="podium__column">
+            <h3>
+              <span class="podium__pseudo">{{pseudo}}</span><br />{{score}}
+              points
+            </h3>
+          </div>
+          {{/podium}}
+        </section>
+        <table>
+          <thead>
+            <td>Rank</td>
+            <td>pseudo</td>
+            <td>Points</td>
+          </thead>
+          <tbody>
+            {{#players}}
+            <tr>
+              <td>{{rank}}</td>
+              <td>{{pseudo}}</td>
+              <td>{{score}}</td>
+            </tr>
+            {{/players}}
+          </tbody>
+        </table>
+      </div>
+      <div class="clashes">
+        {{#clashes}}
+        <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}"
+          >Lien du clash {{index}}</a
+        >
+        {{/clashes}}
+      </div>
+      {{/score}}
+    </div>
+    {{/classement}}
+    <div class="session-all">
+      <div class="clash">
+        <section id="podium">
+          {{#global.podium}}
+          <div class="podium__column">
+            <h3>
+              <span class="podium__pseudo">{{pseudo}}</span><br />{{score}}
+              points
+            </h3>
+          </div>
+          {{/global.podium}}
+        </section>
+        <table>
+          <thead>
+            <td>Rank</td>
+            <td>pseudo</td>
+            <td>Points</td>
+          </thead>
+          <tbody>
+            {{#global.players}}
+            <tr>
+              <td>{{rank}}</td>
+              <td>{{pseudo}}</td>
+              <td>{{score}}</td>
+            </tr>
+            {{/global.players}}
+          </tbody>
+        </table>
+      </div>
     </div>
     <script src="./sessions.js"></script>
   </body>

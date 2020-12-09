@@ -262,3 +262,6 @@ td {
 .box-shadow {
   box-shadow: 8px 10px black;
 }
+[class^="session-"]:not(.active) {
+  display: none;
+}

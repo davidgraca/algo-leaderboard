@@ -1,7 +1,9 @@
 document.querySelectorAll(".sessions a").forEach((sessionLink) => {
   sessionLink.addEventListener("click", (e) => {
-    document.querySelectorAll(".sessions a").forEach((sessionLink) => sessionLink.classList.remove("active"));
+    const session = sessionLink.getAttribute("data-session");
+    document.querySelectorAll(".sessions a").forEach(link => link.classList.remove("active"));
     sessionLink.classList.add("active");
-    console.log(location.hash.substr(1));
+    document.querySelectorAll("[class^=session-]").forEach(link => link.classList.remove("active"));
+    document.querySelector(`.session-${session}`).classList.add("active")
   });
 });
