@@ -35,7 +35,8 @@ body {
   position: relative;
   padding-top: 100px;
   margin: 0px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 30%, transparent 0), radial-gradient(rgba(255, 255, 255, 0.2) 30%, transparent 0);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 30%, transparent 0),
+    radial-gradient(rgba(255, 255, 255, 0.2) 30%, transparent 0);
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
 }
@@ -65,7 +66,11 @@ body {
 }
 
 #podium div:after {
-  background: linear-gradient(180deg, var(--white) 100%, rgba(121, 9, 9, 0) 100%);
+  background: linear-gradient(
+    180deg,
+    var(--white) 100%,
+    rgba(121, 9, 9, 0) 100%
+  );
   border: 8px solid var(--green);
   border-bottom: 0;
   height: 20rem;
@@ -197,7 +202,7 @@ table {
   border-collapse: collapse;
 }
 thead {
-  background-color: #fffff111;
+  background-color: #fffff17a;
   color: #fff;
 }
 tbody {
@@ -245,4 +250,15 @@ td {
   background-color: var(--green);
   border-color: var(--green);
   color: var(--white);
+}
+
+.shadow-text {
+  text-shadow: 16px 14px 0px #000000;
+}
+.shadow-text-small {
+  text-shadow: 5px 6px 0px #000000;
+}
+
+.box-shadow {
+  box-shadow: 8px 10px black;
 }

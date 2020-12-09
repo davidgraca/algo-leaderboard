@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Leaderboard - Axa Christmas Coding Challenge</title>
+    <link rel="shortcut icon" href="assets/favicon.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
     <script src="./script.js"></script>
     <link rel="stylesheet" href="./style.css" />
-    <link href="https://unpkg.com/pattern.css" rel="stylesheet">
+    <link href="https://unpkg.com/pattern.css" rel="stylesheet" />
   </head>
 
   <body>
-    <h1>Christmas</h1>
-    <h2>Coding</h2>
-    <h2>Challenge</h2>
-    <h3>2020</h3>
+    <header class="shadow-text">
+      <h1>Christmas</h1>
+      <h2>Coding</h2>
+      <h2>Challenge</h2>
+      <h3 class="shadow-text-small">2020</h3>
+    </header>
     <div class="sessions">
-      <a href="#session1" class="active">Session 1</a>
-      <a href="#session2">Session 2</a>
-      <a href="#session3">Session 3</a>
-      <a href="#global">Global</a>
+      <a class="box-shadow" href="#session1" class="active">Session 1</a>
+      <a class="box-shadow" href="#session2">Session 2</a>
+      <a class="box-shadow" href="#session3">Session 3</a>
+      <a class="box-shadow" href="#global">Global</a>
     </div>
     <div class="clash">
       <section id="podium">
         {{#podium}}
         <div class="podium__column">
-          <h3><span class="podium__pseudo">{{pseudo}}</span><br>{{score}} points</h3>
+          <h3>
+            <span class="podium__pseudo">{{pseudo}}</span><br />{{score}} points
+          </h3>
         </div>
         {{/podium}}
       </section>
@@ -50,10 +57,11 @@
     </div>
     <div class="clashes">
       {{#clashes}}
-      <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}">Lien du clash {{index}}</a>
+      <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}"
+        >Lien du clash {{index}}</a
+      >
       {{/clashes}}
     </div>
     <script src="./sessions.js"></script>
   </body>
-
 </html>

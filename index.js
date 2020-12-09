@@ -14,20 +14,26 @@ let callback = (err) => {
   console.log("source.txt was copied to destination.txt");
 };
 
-const allClashes = JSON.parse(fs.readFileSync("./clashes.json", "utf8")).session1;
+const allClashes = JSON.parse(fs.readFileSync("./clashes.json", "utf8"))
+  .session1;
 const ranks = [100, 80, 60, 40, 20];
 const ignore = ["djedje72", "Coldk", "J7N__", "Jean-Lou"];
 const beatChamp = 75;
 const completed = 25;
 
 const computeChamp = (players, champion) => {
-  const championEl = players.find(({ codingamerNickname }) => codingamerNickname === champion);
+  const championEl = players.find(
+    ({ codingamerNickname }) => codingamerNickname === champion
+  );
   return players
     .filter((e) => e !== championEl && !ignore.includes(e.codingamerNickname))
     .map(({ codingamerNickname, score }, i) => ({
       pseudo: codingamerNickname,
       // "rank": i+1,
-      score: (ranks[i] || 0) + (players.indexOf(championEl) > i ? beatChamp : 0) + (score === 100 ? completed : 0),
+      score:
+        (ranks[i] || 0) +
+        (players.indexOf(championEl) > i ? beatChamp : 0) +
+        (score === 100 ? completed : 0),
     }));
 };
 
@@ -36,15 +42,18 @@ const computeChamp = (players, champion) => {
 
   const clashes = await Promise.all(
     allClashes.map(async ({ id, champion }) => {
-      const { players } = await fetch("https://www.codingame.com/services/ClashOfCode/findClashReportInfoByHandle", {
-        agent,
-        headers: {
-          accept: "application/json, text/plain, */*",
-          "content-type": "application/json;charset=UTF-8",
-        },
-        body: JSON.stringify([id]),
-        method: "POST",
-      }).then((e) => e.json());
+      const { players } = await fetch(
+        "https://www.codingame.com/services/ClashOfCode/findClashReportInfoByHandle",
+        {
+          agent,
+          headers: {
+            accept: "application/json, text/plain, */*",
+            "content-type": "application/json;charset=UTF-8",
+          },
+          body: JSON.stringify([id]),
+          method: "POST",
+        }
+      ).then((e) => e.json());
       players.sort((a, b) => a.rank - b.rank);
 
       return computeChamp(players, champion);
@@ -82,7 +91,6 @@ const computeChamp = (players, champion) => {
   }
 
   fs.copyFile("style.css", "build/style.css", callback);
-  fs.copyFile("dots.png", "build/dots.png", callback);
   fs.copyFile("sessions.js", "build/sessions.js", callback);
 
   fs.writeFile("build/index.html", index, "utf8", (err) => {
