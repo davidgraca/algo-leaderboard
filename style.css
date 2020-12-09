@@ -20,6 +20,11 @@ h2 {
   position: absolute;
   top: 50px;
   left: 50%;
+  opacity: 0;
+  animation: jackInTheBox;
+  animation-duration: 0.8s;
+  animation-delay: 0s;
+  animation-fill-mode: forwards;
 }
 h2:nth-child(3) {
   top: 100px;
@@ -55,6 +60,7 @@ body {
   justify-content: center;
   margin: auto;
   margin-bottom: 100px;
+  height: 20rem;
 }
 #podium div {
   color: white;
