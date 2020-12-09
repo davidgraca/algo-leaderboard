@@ -18,9 +18,9 @@
     <h2>Challenge</h2>
     <h3>2020</h3>
     <div class="sessions">
-      <a href="#" data-session="1">Session 1</a>
-      <a href="#" data-session="2">Session 2</a>
-      <a href="#" data-session="3">Session 3</a>
+      {{#classement}}
+      <a href="#" data-session="{{index}}">Session {{index}}</a>
+      {{/classement}}
       <a href="#" data-session="all">Global</a>
     </div>
     {{#classement}}
@@ -59,6 +59,33 @@
     {{/score}}
     </div>
     {{/classement}}
+    <div class="session-all">
+      <div class="clash">
+        <section id="podium">
+          {{#global.podium}}
+          <div class="podium__column">
+            <h3><span class="podium__pseudo">{{pseudo}}</span><br>{{score}} points</h3>
+          </div>
+          {{/global.podium}}
+        </section>
+        <table>
+          <thead>
+            <td>Rank</td>
+            <td>pseudo</td>
+            <td>Points</td>
+          </thead>
+          <tbody>
+            {{#global.players}}
+            <tr>
+              <td>{{rank}}</td>
+              <td>{{pseudo}}</td>
+              <td>{{score}}</td>
+            </tr>
+            {{/global.players}}
+          </tbody>
+        </table>
+      </div>
+    </div>
     <script src="./sessions.js"></script>
   </body>
 

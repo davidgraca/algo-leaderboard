@@ -69,16 +69,44 @@ const computeChamp = (players, champion) => {
         rank: i + 1,
       }));
       return  {
-        clashes: session.map(({ id }, i) => ({ id, index: i + 1 })),
+        clashes: session.map(({ id, champion }, i) => ({ id, champion, index: i + 1 })),
         podium: globalChamps.slice(0, 3),
         players: globalChamps.slice(3),
       };
     })
   );
 
-  console.log(classement);
+  const globalClassement = Object.entries(classement
+      .flatMap(({podium, players}) => [...podium, ...players])
+      .reduce(
+        (acc, { pseudo, score }) => ({
+          ...acc,
+          [pseudo]: (acc[pseudo] || 0) + score,
+        }),
+        {}
+      )
+    )
+    .sort(([, a], [, b]) => b - a)
+    .map(([pseudo, score], i) => ({
+      pseudo,
+      score,
+      rank: i + 1,
+    }));
+    console.log(globalClassement);
 
-  let index = mustache.render(data, {"classement":classement.map((score, i) => ({"index":i+1, score}))});
+    // .sort((a,b) => b.score-a.score)
+    // .map((e,i) => ({
+    //   ...e,
+    //   rank: i+1
+    // }));
+
+  let index = mustache.render(data, {
+    "classement":classement.map((score, i) => ({"index":i+1, score})),
+    "global": {
+      podium: globalClassement.slice(0, 3),
+      players: globalClassement.slice(3)
+    }
+  });
 
   let dir = "./build";
 
