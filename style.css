@@ -246,3 +246,7 @@ td {
   border-color: var(--green);
   color: var(--white);
 }
+
+[class^=session-]:not(.active) {
+  display: none;
+}

@@ -18,41 +18,47 @@
     <h2>Challenge</h2>
     <h3>2020</h3>
     <div class="sessions">
-      <a href="#session1" class="active">Session 1</a>
-      <a href="#session2">Session 2</a>
-      <a href="#session3">Session 3</a>
-      <a href="#global">Global</a>
+      <a href="#" data-session="1">Session 1</a>
+      <a href="#" data-session="2">Session 2</a>
+      <a href="#" data-session="3">Session 3</a>
+      <a href="#" data-session="all">Global</a>
     </div>
-    <div class="clash">
-      <section id="podium">
-        {{#podium}}
-        <div class="podium__column">
-          <h3><span class="podium__pseudo">{{pseudo}}</span><br>{{score}} points</h3>
-        </div>
-        {{/podium}}
-      </section>
-      <table>
-        <thead>
-          <td>Rank</td>
-          <td>pseudo</td>
-          <td>Points</td>
-        </thead>
-        <tbody>
-          {{#players}}
-          <tr>
-            <td>{{rank}}</td>
-            <td>{{pseudo}}</td>
-            <td>{{score}}</td>
-          </tr>
-          {{/players}}
-        </tbody>
-      </table>
+    {{#classement}}
+    {{#score}}
+    <div class="session-{{index}}">
+      <div class="clash">
+        <section id="podium">
+          {{#podium}}
+          <div class="podium__column">
+            <h3><span class="podium__pseudo">{{pseudo}}</span><br>{{score}} points</h3>
+          </div>
+          {{/podium}}
+        </section>
+        <table>
+          <thead>
+            <td>Rank</td>
+            <td>pseudo</td>
+            <td>Points</td>
+          </thead>
+          <tbody>
+            {{#players}}
+            <tr>
+              <td>{{rank}}</td>
+              <td>{{pseudo}}</td>
+              <td>{{score}}</td>
+            </tr>
+            {{/players}}
+          </tbody>
+        </table>
+      </div>
+      <div class="clashes">
+        {{#clashes}}
+        <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}">Lien du clash {{index}}</a>
+        {{/clashes}}
+      </div>
+    {{/score}}
     </div>
-    <div class="clashes">
-      {{#clashes}}
-      <a href="https://www.codingame.com/clashofcode/clash/report/{{id}}">Lien du clash {{index}}</a>
-      {{/clashes}}
-    </div>
+    {{/classement}}
     <script src="./sessions.js"></script>
   </body>
 
