@@ -14,8 +14,7 @@ let callback = (err) => {
   console.log("source.txt was copied to destination.txt");
 };
 
-const allClashes = JSON.parse(fs.readFileSync("./clashes.json", "utf8"));
-console.log(allClashes);
+const allClashes = JSON.parse(fs.readFileSync("./clashes.json", "utf8")).session1;
 const ranks = [100, 80, 60, 40, 20];
 const ignore = ["djedje72", "Coldk", "J7N__", "Jean-Lou"];
 const beatChamp = 75;
@@ -84,6 +83,7 @@ const computeChamp = (players, champion) => {
 
   fs.copyFile("style.css", "build/style.css", callback);
   fs.copyFile("dots.png", "build/dots.png", callback);
+  fs.copyFile("sessions.js", "build/sessions.js", callback);
 
   fs.writeFile("build/index.html", index, "utf8", (err) => {
     console.log(err);

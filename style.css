@@ -44,7 +44,7 @@ body {
   padding-top: 50px;
   border-top: 5px solid var(--white);
   max-width: 1000px;
-  margin: 100px auto;
+  margin: 50px auto;
   width: 90%;
 }
 
@@ -220,4 +220,25 @@ td {
   line-height: 30px;
   left: 0px;
   bottom: 0px;
+}
+
+.sessions {
+  margin-top: 70px;
+}
+
+.sessions a {
+  background-color: var(--white);
+  border: 3px solid var(--green);
+  color: var(--green);
+  margin: 0px 20px;
+  font-size: 1.4rem;
+  text-decoration: none;
+  padding: 10px 20px;
+}
+
+.sessions a.active,
+.sessions a:hover {
+  background-color: var(--green);
+  border-color: var(--green);
+  color: var(--white);
 }
