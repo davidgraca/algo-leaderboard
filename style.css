@@ -211,4 +211,9 @@ td {
 
 .clashes {
   background-color: #fff;
+  position: fixed;
+  width: 100%;
+  line-height: 30px;
+  left: 0px;
+  bottom: 0px;
 }
