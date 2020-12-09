@@ -3,6 +3,7 @@
   --darkRed: rgba(121, 9, 9, 1);
   --green: #5dd39e;
   --white: #fff;
+  --shadow: #00000099;
 }
 
 h1 {
@@ -40,8 +41,7 @@ body {
   position: relative;
   padding-top: 100px;
   margin: 0px;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 30%, transparent 0),
-    radial-gradient(rgba(255, 255, 255, 0.2) 30%, transparent 0);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.2) 30%, transparent 0), radial-gradient(rgba(255, 255, 255, 0.2) 30%, transparent 0);
   background-size: 30px 30px;
   background-position: 0 0, 15px 15px;
 }
@@ -72,11 +72,7 @@ body {
 }
 
 #podium div:after {
-  background: linear-gradient(
-    180deg,
-    var(--white) 100%,
-    rgba(121, 9, 9, 0) 100%
-  );
+  background: linear-gradient(180deg, var(--white) 100%, rgba(121, 9, 9, 0) 100%);
   border: 8px solid var(--green);
   border-bottom: 0;
   height: 20rem;
@@ -259,14 +255,14 @@ td {
 }
 
 .shadow-text {
-  text-shadow: 16px 14px 0px #000000;
+  text-shadow: 16px 14px 0px var(--shadow);
 }
 .shadow-text-small {
-  text-shadow: 5px 6px 0px #000000;
+  text-shadow: 5px 6px 0px var(--shadow);
 }
 
 .box-shadow {
-  box-shadow: 8px 10px black;
+  box-shadow: 8px 10px var(--shadow);
 }
 [class^="session-"]:not(.active) {
   display: none;
