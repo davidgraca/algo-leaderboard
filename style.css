@@ -1,8 +1,8 @@
 :root {
   --red: #da2c38;
   --darkRed: rgba(121, 9, 9, 1);
-  --green: #5dd39e;
-  --white: #fff;
+  --green: rgb(93, 211, 158);
+  --white: rgb(255, 255, 255);
   --shadow: #00000099;
 }
 
@@ -260,7 +260,7 @@ tbody {
 tr {
   line-height: 30px;
 }
-tr:nth-child(2n) {
+tr:nth-child(even) {
   background-color: #fffff555;
 }
 td {
@@ -277,6 +277,11 @@ td {
 
 .clashes a {
   margin: 0px 20px;
+  color: var(--green);
+}
+
+.clashes a:visited {
+  color: var(--darkRed);
 }
 
 .sessions {
@@ -291,6 +296,7 @@ td {
   font-size: 1.4rem;
   text-decoration: none;
   padding: 10px 20px;
+  transition: all 0.3s;
 }
 
 .sessions a.active,
@@ -298,6 +304,8 @@ td {
   background-color: var(--green);
   border-color: var(--green);
   color: var(--white);
+  transition: all 0.3s;
+  box-shadow: 20px 16px 10px var(--shadow);
 }
 
 .shadow-text {
@@ -310,6 +318,7 @@ td {
 .box-shadow {
   box-shadow: 8px 10px var(--shadow);
 }
+
 [class^="session-"]:not(.active) {
   display: none;
 }
